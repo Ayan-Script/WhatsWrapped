@@ -1,0 +1,5 @@
+{
+  "name": "WhatsWrapped - Privacy-First Insights",
+  "description": "A Spotify Wrapped-style story for your WhatsApp chat history. Analyze top friends, busiest hours, and chat vibes using local processing and Gemini AI for deep insights.",
+  "requestFramePermissions": []
+}
