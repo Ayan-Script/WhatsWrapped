@@ -247,7 +247,7 @@ const App: React.FC = () => {
             </div>
           </div>
           <p className="text-[10px] text-white/10 font-black uppercase tracking-[0.2em] text-center">
-            WhatsWrapped • 2024 • Not affiliated with WhatsApp Inc.
+            WhatsWrapped • 2025 • Not affiliated with WhatsApp Inc.
           </p>
         </footer>
       )}
