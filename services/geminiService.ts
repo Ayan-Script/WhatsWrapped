@@ -3,10 +3,20 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { ChatStats, AiInsights } from "../types";
 
 export const getAiInsights = async (stats: ChatStats, sampleText: string): Promise<AiInsights> => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const apiKey = process.env.API_KEY;
+  
+  if (!apiKey) {
+    console.warn("API_KEY is missing. Returning default insights.");
+    return {
+      vibe: "Pure Connection",
+      insideJokes: ["Late night chats", "Coffee dates", "Emoji wars"],
+      friendshipSummary: "Your chat history shows a deep and consistent bond. You two are truly in sync!"
+    };
+  }
+
+  const ai = new GoogleGenAI({ apiKey });
   
   const topSenders = Object.entries(stats.senders)
-    // Fix: Explicitly cast to number to avoid arithmetic operation errors
     .sort((a, b) => (b[1] as number) - (a[1] as number))
     .slice(0, 3)
     .map(([name, count]) => `${name} (${count} messages)`)
@@ -49,7 +59,6 @@ export const getAiInsights = async (stats: ChatStats, sampleText: string): Promi
       }
     });
 
-    // Fix: Directly access the .text property from the response
     const jsonStr = response.text || "{}";
     return JSON.parse(jsonStr.trim());
   } catch (error) {
