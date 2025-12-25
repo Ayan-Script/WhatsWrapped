@@ -5,7 +5,7 @@ import JSZip from 'jszip';
 import { parseWhatsAppChat, calculateStats } from './services/chatParser';
 import { getAiInsights } from './services/geminiService';
 import { ChatStats, AiInsights } from './types';
-import { StoryView } from './components/StoryView.tsx';
+import { StoryView } from './components/StoryView';
 
 const Logo: React.FC<{ className?: string }> = ({ className = "w-10 h-10" }) => (
   <div className={`relative ${className} flex items-center justify-center`}>
